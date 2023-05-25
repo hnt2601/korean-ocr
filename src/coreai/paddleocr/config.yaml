@@ -1,0 +1,29 @@
+det:
+    max_side_len: 640 # độ dài tối đa của đoạn text muốn detect, càng ngắn càng infer nhanh và độ chính xác cao những độ phân tách các text xa nhau kém dần
+    binary_thresh: 0.3 # ngưỡng để segmentation vị trí text, càng cao thì phân tách vị trí box càng rõ ràng
+    box_thresh: 0.1 # ngưỡng score loại bỏ bbox
+    max_candidates: 100 # số lượng lớn ảnh hưởng đến tốc độ suy luận
+    unclip_ratio: 1.3 # Tỉ lệ mở rộng của box đầu ra
+    min_size: 3
+    model_dir: src/coreai/weights/infer_model/det
+    use_gpu: False
+    gpu_mem: 4000
+    gpu_ind: 0
+    enable_mkldnn: False
+    use_zero_copy_run: False
+
+
+rec:
+    rec_image_shape: "3, 32, 320"
+    rec_batch_num: 30
+    max_text_length: 25
+    rec_char_type: 'korean'
+    loss_type: 'ctc'
+    use_space_char: False
+    rec_char_dict_path: src/coreai/paddleocr/ppocr/dict/korean_dict.txt
+    model_dir: src/coreai/weights/infer_model/rec
+    use_gpu: False
+    gpu_mem: 4000
+    gpu_ind: 0
+    enable_mkldnn: False
+    use_zero_copy_run: False
